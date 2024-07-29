@@ -29,16 +29,16 @@ console.log(supplyChanges);
 //    - if the value is 0, log 'No Change.'
 //    - if the value is negative, format the log as 'Removed x parts.' 
 console.log('6. Showing supplyChanges...');
-for (val of supplyChanges) {
-    if (val > 0) {
-        console.log("Added", val, "parts.");
+for (let i = 0; i < supplyChanges.length; i++) {
+    if (supplyChanges[i] > 0) {
+        console.log("Added", supplyChanges[i], "parts.");
     }
-    else if (val === 0) {
+    else if (supplyChanges[i] === 0) {
         console.log("No Change.");
     }
     else {
-        val *= -1;
-        console.log("Removed", val, "parts.");
+        supplyChanges[i] *= -1;
+        console.log("Removed", supplyChanges[i], "parts.");
     }
 }
 
@@ -46,11 +46,26 @@ for (val of supplyChanges) {
 console.log('---  Stretch Goals  ---');
 // 7. Rewrite the `for` loop from #6 as a `for of` loop. 
 console.log('7. Showing supplyChanges with "for of" loop');
-
+for (x of supplyChanges) {
+    if (x > 0) {
+        console.log("Added", x, "parts.");
+    }
+    else if (x === 0) {
+        console.log("No Change.");
+    }
+    else {
+        x *= -1;
+        console.log("Removed", x, "parts.");
+    }
+}
 // 8. Write a loop to determine the total number of parts available by
 //    adding up all the numbers in the 'supplyChanges' array.
 console.log('8. Total supplies available is:');
-
+let supplies = 0
+for (supply of supplyChanges) {
+    supplies += supply;
+}
+console.log( supplies);
 // 9. We have a large stash of parts in our warehouse that we 
 //    need to box up and get ready for shipment. 
 //    There are 572 parts in total, and each box holds 7 parts.
@@ -58,3 +73,12 @@ console.log('8. Total supplies available is:');
 //    no more boxes can be filled.
 //    Then log how many boxes were filled, and how many parts are left over.
 console.log('9. Filling boxes with a "while" loop');
+let check = 572;
+let boxes = 0
+while (check > 6) {
+    check -= 7
+    boxes += 1
+}
+let remaining = check % 7;
+console.log( "Number of boxes packed is", boxes );
+console.log( "Number of parts remaining", remaining );
